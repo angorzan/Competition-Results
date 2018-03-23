@@ -1,29 +1,76 @@
 <!DOCTYPE html>
-<html lang="PL">
+<html lang="EN">
 <meta charset="UTF-8">
 <head>
-    <title>Wyniki zawodów</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Climbing Competition</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h3>
-    Wprowadź wyniki zawodów
-</h3>
-<form action="">
-    <p><select name="RunnerName" id="RunnerName">
-        <option value="volvo">Volvo</option>
+<div id="content">
 
-    </select></p>
-    <p><select name="routeNumber" id="routeNumber">
-        <option value="volvo">Volvo</option>
+    <div class="container">
+        <div id="header">
+            <h3>
+                Enter the results of the competition
+            </h3>
+            </div>
+        <!--<div id="content">-->
+            <form action="submit">
+                    <div class="form-group">
+                        <p>
+                            <label for="ClimberName">Choose climber</label>
+                            <select class="form-control" name="ClimberName" id="ClimberName">
+                                <option value="JonSnow">Jon Snow</option>
+                                <option value="JaimeLannister">Jaime Lannister</option>
+                                <option value="RamsayBolton">Ramsay Bolton</option>
+                                <option value="AryaStark">Arya Stark</option>
+                                <option value="BrienneOfTarth">Brienne Of Tarth</option>
+                                <option value="DaenerysTargaryen">Daenerys Targaryen</option>
+                        </select></p>
 
-    </select></p>
-    <p><select name="isDisqualified" id="isDisqualified">
-        <option value="volvo">Volvo</option>
+                        <p>
 
-    </select></p>
-</form>
+                            <label for="routeNumber">Choose route</label>
+                            <select multiple class="form-control" name="routeNumber" id="routeNumber">
+                                <option value="Greywater Watch">Greywater Watch</option>
+                                <option value="Wall">Wall</option>
+                                <option value="Riverrun">Riverrun</option>
+                                <option value="Winterfell">Winterfell</option>
+                        </select></p>
 
-<script src="../js/app.js"></script>
+                        <p>
+                            <label for="time">Choose time</label>
+                            <select class="form-control" name="time" id="time">
+                                <option value=">1">less than 1 minute</option>
+                                <option value=">2">less than 2 minutes</option>
+                                <option value=">3">less than 3 minutes</option>
+                                <option value=">4">less than 4 minutes</option>
+                                <option value="4=<">4 minutes and more</option>
+                        </select></p>
+
+                        <p>
+                            <label for="isDisqualified">Choose if climber is disqualified</label>
+                            <div class="checkbox">
+                                <label><input type="checkbox" id="isDisqualified">is disqualified</label>
+                            </div>
+                        </p>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    <!--</div>-->
+                </div>
+        </form>
+    </div>
+</div>
+
+<script src="./js/app.js"></script>
 </body>
 </html>

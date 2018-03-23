@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let Greywater = new Route('Greywater Watch', 1, 10);
     let Wall = new Route('Wall', 2, 100);
-    let GoldLoaks = new Route("City Watch of King's Landing", 3, 50);
     let Riverrun = new Route('Riverrun', 4, 40);
     let Winterfell = new Route('Winterfell', 5, 80);
     let routes = [];
