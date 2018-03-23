@@ -24,7 +24,7 @@
             </h3>
             </div>
         <!--<div id="content">-->
-            <form action="submit">
+            <form action="submit" class="singleResult">
                     <div class="form-group">
                         <p>
                             <label for="ClimberName">Choose climber</label>
@@ -40,7 +40,7 @@
                         <p>
 
                             <label for="routeNumber">Choose route</label>
-                            <select multiple class="form-control" name="routeNumber" id="routeNumber">
+                            <select class="form-control" name="routeNumber" id="routeNumber">
                                 <option value="Greywater Watch">Greywater Watch</option>
                                 <option value="Wall">Wall</option>
                                 <option value="Riverrun">Riverrun</option>
@@ -53,18 +53,23 @@
                                 <option value=">1">less than 1 minute</option>
                                 <option value=">2">less than 2 minutes</option>
                                 <option value=">3">less than 3 minutes</option>
-                                <option value=">4">less than 4 minutes</option>
-                                <option value="4=<">4 minutes and more</option>
+                                <option value=">4=>">3 minutes and more</option>
                         </select></p>
 
                         <p>
                             <label for="isDisqualified">Choose if climber is disqualified</label>
-                            <div class="checkbox">
-                                <label><input type="checkbox" id="isDisqualified">is disqualified</label>
-                            </div>
+                            <select class="form-control" name="isDisqualified" id="isDisqualified">
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
+
+                            <!--<div class="checkbox">-->
+                                <!--<label><input type="checkbox" id="isDisqualified">is disqualified-->
+                                <!--</label>-->
+                            <!--</div>-->
                         </p>
 
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-danger">Submit</button>
                     <!--</div>-->
                 </div>
         </form>
