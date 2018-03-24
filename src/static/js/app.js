@@ -1,5 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+
+    const ClimberNameField = document.querySelector('[name="ClimberName"]');
+    const routeNumberField = document.querySelector('[name="routeNumber"]');
+    const timeField = document.querySelector('[name="time"]');
+    const isDisqualifiedField = document.querySelector('[name="isDisqualified"]');
+
+    let btn = document.querySelector('#btn');
+    btn.addEventListener('click', event => {
+        event.preventDefault();
+        const name = ClimberNameField.value;
+        const route = routeNumberField.value;
+        const time = timeField.value;
+        const isDisqualified = isDisqualifiedField.value;
+
+        fetch('/sent', {
+            method : 'POST',
+            body   : JSON.stringify({
+                name,
+                route,
+                time,
+                isDisqualified,
+            }),
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+        })
+            .then(r => r.text())
+            .then(data => {
+                console.log(data);
+            });
+    });
+
+
     function Climber(ClimberName, ClimberId, ClimberTotalPoints) {
         this.name = ClimberName;
         this.id = ClimberId;

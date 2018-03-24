@@ -10,6 +10,7 @@ app.use(express.static(
 app.use(bodyParser.urlencoded({
     extended : true,
 }));
+
 app.use(bodyParser.json());
 
 app.get('/',(req, res) => {
@@ -17,14 +18,15 @@ app.get('/',(req, res) => {
 });
 
 app.post('/sent', (req, res) => {
-    const {ClimberName, routeNumber, time, isDisqualified} = req.body;
-    console.log(ClimberName, routeNumber, time, isDisqualified);
+    console.log(req.body);
+    const {name, route, time, isDisqualified} = req.body;
+    console.log(name, route, time, isDisqualified);
     res.send('Thank you for your data!');
 });
 
-app.get('/sent',(req, res) => {
-    res.send('Thank you for your data!');
-});
+// app.get('/sent',(req, res) => {
+//     res.send('Thank you for your data!');
+// });
 
 
 app.get('/rankings',(req, res) => {
