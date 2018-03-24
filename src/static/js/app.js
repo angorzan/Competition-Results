@@ -22,12 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
         this.points = points;
     };
 
-    let Greywater = new Route('Greywater Watch', 1, 10);
+    let CasterlyRock = new Route('CasterlyRock', 1, 10);
     let Wall = new Route('Wall', 2, 100);
     let Riverrun = new Route('Riverrun', 4, 40);
     let Winterfell = new Route('Winterfell', 5, 80);
     let routes = [];
-    routes.push(Greywater, Wall, GoldLoaks, Riverrun, Winterfell);
+    routes.push(CasterlyRock, Wall, Riverrun, Winterfell);
     console.log(routes);
 
     let DisableCheck = document.querySelector('#isDisqualified');
