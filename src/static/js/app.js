@@ -98,11 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // let DisableCheck = document.querySelector('#isDisqualified');
-    // let select = document.querySelectorAll('select:not(#isDisqualified)');
-    // DisableCheck.addEventListener('change', function(){
-    //     DisableCheck.value === 'true' ? select.forEach(select => select.disabled = true)
-    //         : select.forEach(select=> select.disabled = false);
-    // });
+    let DisableCheck = document.querySelector('#isDisqualified');
+    let select = document.querySelectorAll('select:not(#isDisqualified)');
+    DisableCheck.addEventListener('change', function(){
+        DisableCheck.value === 'true' ? select.forEach(select => select.disabled = true)
+            : select.forEach(select=> select.disabled = false);
+    });
 
 });

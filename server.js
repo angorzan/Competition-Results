@@ -48,12 +48,11 @@ class Time {
         this.points = points;
     }
 };
-let lessThanOne = new Time('less than 1 minute', '<1', 10);
-let lessThanTwo = new Time('less than 2 minutes', '<2', 8);
-let lessThanThree = new Time('less than 3 minutes', '<3', 5);
-let lessThanFour = new Time('3 minutes and more', '>=3', 2);
-let climbersTime = [];
-climbersTime.push(lessThanOne, lessThanTwo, lessThanThree, lessThanFour);
+let climbersTime = new Map();
+climbersTime.set('<1', new Time('less than 1 minute', '<1', 10));
+climbersTime.set('<2', new Time('less than 2 minutes', '<2', 8));
+climbersTime.set('<3', new Time('less than 3 minutes', '<3', 5));
+climbersTime.set('>=3', new Time('3 minutes and more', '>=3', 2));
 console.log(climbersTime);
 
 app.use(express.static(
@@ -77,6 +76,8 @@ app.post('/sent', (req, res) => {
         let route = routes.get(routeId);
         console.log(route);
         climber.totalPoints += route.points;
+        let ClimberTime = climbersTime.get(time);
+        climber.totalPoints += ClimberTime.points;
 
     console.log(climbers);
     console.log(name, route, time, isDisqualified);
@@ -95,7 +96,7 @@ app.get('/routes', (req, res) => {
 
 app.get('/time', (req, res) => {
 
-    res.send(climbersTime);
+    res.send(Array.from(climbersTime.values()));
 });
 
 
