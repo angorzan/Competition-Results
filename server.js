@@ -69,6 +69,12 @@ app.get('/climbers', (req, res) => {
 
     res.send(climbers);
 });
+
+app.get('/routes', (req, res) => {
+
+    res.send(routes);
+});
+
 // app.get('/sent',(req, res) => {
 //     res.send('Thank you for your data!');
 // });

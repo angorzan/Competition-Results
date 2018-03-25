@@ -54,7 +54,26 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+    fetch('/routes', {
+        method : 'GET',
+        headers: {
+            'Content-Type' : 'application/json',
+        },
+    })
+        .then(r => r.json())
+        .then(data => {
+            let routes = [];
+            console.log(data);
+            data.forEach(item=> routes.push(item));
+            let routeNumber = document.querySelector('#routeNumber');
+            routes.forEach(route=> {
+                let option = document.createElement('option');
+                routeNumber.appendChild(option);
+                option.setAttribute('value', route.id);
+                option.innerText = route.name;
 
+            });
+        });
     // let DisableCheck = document.querySelector('#isDisqualified');
     // let select = document.querySelectorAll('select:not(#isDisqualified)');
     // DisableCheck.addEventListener('change', function(){
