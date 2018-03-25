@@ -43,6 +43,20 @@ routes.push(CasterlyRock, Wall, Riverrun, Winterfell);
 console.log(routes);
 // app.use(rankingUpdateMiddleware);
 
+class Time {
+    constructor(threshold, id, points) {
+        this.threshold = threshold;
+        this.id = id;
+        this.points = points;
+    }
+};
+let lessThanOne = new Time('less than 1 minute', '<1', 10);
+let lessThanTwo = new Time('less than 2 minutes', '<2', 8);
+let lessThanThree = new Time('less than 3 minutes', '<3', 5);
+let lessThanFour = new Time('3 minutes and more', '>=3', 2);
+let climbersTime = [];
+climbersTime.push(lessThanOne, lessThanTwo, lessThanThree, lessThanFour);
+console.log(climbersTime);
 
 app.use(express.static(
     path.join(__dirname, './src/static')
@@ -74,6 +88,12 @@ app.get('/routes', (req, res) => {
 
     res.send(routes);
 });
+
+app.get('/time', (req, res) => {
+
+    res.send(climbersTime);
+});
+
 
 // app.get('/sent',(req, res) => {
 //     res.send('Thank you for your data!');

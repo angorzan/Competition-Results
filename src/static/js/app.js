@@ -74,6 +74,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
             });
         });
+
+    fetch('/time', {
+        method : 'GET',
+        headers: {
+            'Content-Type' : 'application/json',
+        },
+    })
+        .then(r => r.json())
+        .then(data => {
+            let climbersTime = [];
+            console.log(data);
+            data.forEach(item=> climbersTime.push(item));
+            let time = document.querySelector('#time');
+            climbersTime.forEach(item=> {
+                let option = document.createElement('option');
+                time.appendChild(option);
+                option.setAttribute('value', item.id);
+                option.innerText = item.threshold;
+
+            });
+        });
+
+
+
     // let DisableCheck = document.querySelector('#isDisqualified');
     // let select = document.querySelectorAll('select:not(#isDisqualified)');
     // DisableCheck.addEventListener('change', function(){
