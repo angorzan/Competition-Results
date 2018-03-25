@@ -15,14 +15,13 @@ class Climber{
     }
 };
 
-let JonSnow = new Climber('Jon Snow', 1, 0);
-let JaimeLannister = new Climber('Jaime Lannister', 2, 0);
-let RamsayBolton = new Climber('Ramsay Bolton', 3, 0);
-let AryaStark = new Climber('Arya Stark', 4, 0);
-let BrienneOfTarth = new Climber('Brienne Of Tarth', 5, 0);
-let DaenerysTargaryen = new Climber('Daenerys Targaryen', 6, 0);
-let climbers = [];
-climbers.push(JonSnow, JaimeLannister, RamsayBolton, AryaStark, BrienneOfTarth, DaenerysTargaryen);
+let climbers = new Map();
+climbers.set('Jon Snow', new Climber('Jon Snow', 1, 0));
+climbers.set('JaimeLannister', new Climber('Jaime Lannister', 2, 0));
+climbers.set('RamsayBolton', new Climber('Ramsay Bolton', 3, 0));
+climbers.set('AryaStark', new Climber('Arya Stark', 4, 0));
+climbers.set('BrienneOfTarth', new Climber('Brienne Of Tarth', 5, 0));
+climbers.set('DaenerysTargaryen', new Climber('Daenerys Targaryen', 6, 0));
 console.log(climbers);
 
 
@@ -73,7 +72,28 @@ app.use(bodyParser.json());
 app.post('/sent', (req, res) => {
     console.log(req.body);
     const {name, route, time, isDisqualified} = req.body;
-    app.use(pointscounterMiddleware);
+    // app.use(pointscounterMiddleware);
+    let pointscounter = (name, route, time) => {
+
+        //    if (route === '1') {
+        //         .totalpoints += 10;
+        //
+        //     }
+        //     else if (route === '2') {
+        //         JonSnow.totalpoints += 100;
+        //     }
+        //     else if (route === '3') {
+        //         JonSnow.totalpoints += 40;
+        //     }
+        //     else {
+        //         JonSnow.totalpoints += 80;
+        //     }
+        //
+        //
+        // }
+        };
+
+
     console.log(climbers);
     console.log(name, route, time, isDisqualified);
     res.send('Thank you for your data!');
@@ -81,7 +101,7 @@ app.post('/sent', (req, res) => {
 
 app.get('/climbers', (req, res) => {
 
-    res.send(climbers);
+    res.send(Array.from(climbers.values()));
 });
 
 app.get('/routes', (req, res) => {
@@ -109,6 +129,3 @@ app.get('/rankings',(req, res) => {
 app.listen(3000, ()	=>	{
     console.log('Serwer is listening on	http://localhost:3000');
 });
-
-module.exports = climbers;
-module.exports = JonSnow;
