@@ -32,7 +32,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(data);
             });
     });
-    //
+
+    fetch('/climbers', {
+        method : 'GET',
+        headers: {
+            'Content-Type' : 'application/json',
+        },
+    })
+        .then(r => r.json())
+        .then(data => {
+            let climbers = [];
+            console.log(data);
+            data.forEach(item=> climbers.push(item));
+            let climberName = document.querySelector('#ClimberName');
+            climbers.forEach(climber=> {
+                let option = document.createElement('option');
+                climberName.appendChild(option);
+                option.setAttribute('value', climber.name);
+                option.innerText = climber.name;
+
+            });
+        });
+
+
     // let DisableCheck = document.querySelector('#isDisqualified');
     // let select = document.querySelectorAll('select:not(#isDisqualified)');
     // DisableCheck.addEventListener('change', function(){

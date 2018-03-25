@@ -54,20 +54,21 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-app.get('/',(req, res) => {
-    res.send('Express.js z angorzan!');
-});
+// app
 
 app.post('/sent', (req, res) => {
     console.log(req.body);
     const {name, route, time, isDisqualified} = req.body;
     app.use(pointscounterMiddleware);
     console.log(climbers);
-    // console.log(name, route, time, isDisqualified);
+    console.log(name, route, time, isDisqualified);
     res.send('Thank you for your data!');
 });
 
+app.get('/climbers', (req, res) => {
 
+    res.send(climbers);
+});
 // app.get('/sent',(req, res) => {
 //     res.send('Thank you for your data!');
 // });
