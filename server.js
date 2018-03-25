@@ -17,11 +17,11 @@ class Climber{
 
 let climbers = new Map();
 climbers.set('Jon Snow', new Climber('Jon Snow', 1, 0));
-climbers.set('JaimeLannister', new Climber('Jaime Lannister', 2, 0));
-climbers.set('RamsayBolton', new Climber('Ramsay Bolton', 3, 0));
-climbers.set('AryaStark', new Climber('Arya Stark', 4, 0));
-climbers.set('BrienneOfTarth', new Climber('Brienne Of Tarth', 5, 0));
-climbers.set('DaenerysTargaryen', new Climber('Daenerys Targaryen', 6, 0));
+climbers.set('Jaime Lannister', new Climber('Jaime Lannister', 2, 0));
+climbers.set('Ramsay Bolton', new Climber('Ramsay Bolton', 3, 0));
+climbers.set('Arya Stark', new Climber('Arya Stark', 4, 0));
+climbers.set('Brienne Of Tarth', new Climber('Brienne Of Tarth', 5, 0));
+climbers.set('Daenerys Targaryen', new Climber('Daenerys Targaryen', 6, 0));
 console.log(climbers);
 
 
@@ -33,14 +33,13 @@ class Route {
     }
 };
 
-let CasterlyRock = new Route('Casterly Rock', 1, 10);
-let Wall = new Route('Wall', 2, 100);
-let Riverrun = new Route('Riverrun', 4, 40);
-let Winterfell = new Route('Winterfell', 5, 80);
-let routes = [];
-routes.push(CasterlyRock, Wall, Riverrun, Winterfell);
+let routes = new Map();
+routes.set('1', new Route('Casterly Rock', 1, 10));
+routes.set('2', new Route('Wall', 2, 100));
+routes.set('3', new Route('Eyrie', 3, 80));
+routes.set('4', new Route('Riverrun', 4, 40));
+routes.set('5', new Route('Winterfell', 5, 80));
 console.log(routes);
-// app.use(rankingUpdateMiddleware);
 
 class Time {
     constructor(threshold, id, points) {
@@ -67,32 +66,17 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-// app
 
 app.post('/sent', (req, res) => {
     console.log(req.body);
-    const {name, route, time, isDisqualified} = req.body;
-    // app.use(pointscounterMiddleware);
-    let pointscounter = (name, route, time) => {
-
-        //    if (route === '1') {
-        //         .totalpoints += 10;
-        //
-        //     }
-        //     else if (route === '2') {
-        //         JonSnow.totalpoints += 100;
-        //     }
-        //     else if (route === '3') {
-        //         JonSnow.totalpoints += 40;
-        //     }
-        //     else {
-        //         JonSnow.totalpoints += 80;
-        //     }
-        //
-        //
-        // }
-        };
-
+    const {name, routeId, time, isDisqualified} = req.body;
+        console.log(name);
+        console.log(routeId);
+        let climber = climbers.get(name);
+        console.log(routes);
+        let route = routes.get(routeId);
+        console.log(route);
+        climber.totalPoints += route.points;
 
     console.log(climbers);
     console.log(name, route, time, isDisqualified);
@@ -106,7 +90,7 @@ app.get('/climbers', (req, res) => {
 
 app.get('/routes', (req, res) => {
 
-    res.send(routes);
+    res.send(Array.from(routes.values()));
 });
 
 app.get('/time', (req, res) => {
@@ -121,9 +105,9 @@ app.get('/time', (req, res) => {
 
 
 app.get('/rankings',(req, res) => {
-    // app.use(rankingUpdateMiddleware);
-    climbers.sort(function(a,b) {return (a.totalPoints > b.totalPoints) ? -1 : ((b.totalPoints > a.totalPoints) ? 1 : 0);} );
-    res.send(climbers);
+    let climberAr = Array.from(climbers.values());
+    climberAr.sort(function(a,b) {return (a.totalPoints > b.totalPoints) ? -1 : ((b.totalPoints > a.totalPoints) ? 1 : 0);} );
+    res.send(climberAr);
 });
 
 app.listen(3000, ()	=>	{

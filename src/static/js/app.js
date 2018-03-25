@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', event => {
         event.preventDefault();
         const name = ClimberNameField.value;
-        const route = routeNumberField.value;
+        const routeId = routeNumberField.value;
         const time = timeField.value;
         const isDisqualified = isDisqualifiedField.value;
 
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             method : 'POST',
             body   : JSON.stringify({
                 name,
-                route,
+                routeId,
                 time,
                 isDisqualified,
             }),
