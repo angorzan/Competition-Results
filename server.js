@@ -4,6 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const pointscounterMiddleware = require('./points_counter_middleware');
 const rankingUpdateMiddleware = require('./ranking_update_middleware');
+let winners = require('./ranking_update_middleware');
 
 class Climber{
     constructor(ClimberName, ClimberId, ClimberTotalPoints)
@@ -40,7 +41,7 @@ let Winterfell = new Route('Winterfell', 5, 80);
 let routes = [];
 routes.push(CasterlyRock, Wall, Riverrun, Winterfell);
 console.log(routes);
-app.use(rankingUpdateMiddleware);
+// app.use(rankingUpdateMiddleware);
 
 
 app.use(express.static(
@@ -73,10 +74,14 @@ app.post('/sent', (req, res) => {
 
 
 app.get('/rankings',(req, res) => {
-
-    res.send(`Total points ranking: ${ranking}`);
+    // app.use(rankingUpdateMiddleware);
+    climbers.sort(function(a,b) {return (a.totalPoints > b.totalPoints) ? -1 : ((b.totalPoints > a.totalPoints) ? 1 : 0);} );
+    res.send(climbers);
 });
 
 app.listen(3000, ()	=>	{
     console.log('Serwer is listening on	http://localhost:3000');
 });
+
+module.exports = climbers;
+module.exports = JonSnow;

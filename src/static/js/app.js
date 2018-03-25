@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-
     const ClimberNameField = document.querySelector('[name="ClimberName"]');
     const routeNumberField = document.querySelector('[name="routeNumber"]');
     const timeField = document.querySelector('[name="time"]');
@@ -33,16 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log(data);
             });
     });
-
-
-
-    let DisableCheck = document.querySelector('#isDisqualified');
-    let select = document.querySelectorAll('select:not(#isDisqualified)');
-    DisableCheck.addEventListener('change', function(){
-        DisableCheck.value === 'true' ? select.forEach(select => select.disabled = true)
-            : select.forEach(select=> select.disabled = false);
-
-    });
-
+    //
+    // let DisableCheck = document.querySelector('#isDisqualified');
+    // let select = document.querySelectorAll('select:not(#isDisqualified)');
+    // DisableCheck.addEventListener('change', function(){
+    //     DisableCheck.value === 'true' ? select.forEach(select => select.disabled = true)
+    //         : select.forEach(select=> select.disabled = false);
+    // });
 
 });

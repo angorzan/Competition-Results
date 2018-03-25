@@ -1,5 +1,6 @@
+let JonSnow = require('./server.js');
+
 function pointscounterMiddleware(req, res, next) {
-    // console.log('Ilość odwiedzin:', ++counter);
     if (name === 'Jon Snow') {
         if (route === '1') {
             JonSnow.totalpoints += 10;
