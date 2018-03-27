@@ -17,3 +17,11 @@ select {
     font-size: 14px;
 }
 
+#thanksInfo {
+    display: none;
+}
+#disqualificationInfo {
+    display: none;
+}
+
+

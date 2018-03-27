@@ -4,15 +4,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const routeNumberField = document.querySelector('[name="routeNumber"]');
     const timeField = document.querySelector('[name="time"]');
     const isDisqualifiedField = document.querySelector('[name="isDisqualified"]');
+    const DisableCheck = document.querySelector('#isDisqualified');
+    const submitBtn = document.querySelector('#submitBtn');
+    const select = document.querySelectorAll('select:not(#isDisqualified)');
 
-    let btn = document.querySelector('#btn');
-    btn.addEventListener('click', event => {
+    DisableCheck.addEventListener('change', function(){
+        DisableCheck.value === 'true' ? select.forEach(select => select.disabled = true)
+            : select.forEach(select=> select.disabled = false);
+    });
+
+    submitBtn.addEventListener('click', event => {
         event.preventDefault();
         const name = ClimberNameField.value;
         const routeId = routeNumberField.value;
         const time = timeField.value;
         const isDisqualified = isDisqualifiedField.value;
+        const thanksInfo = document.querySelector('#thanksInfo');
+        const thanksBtn = document.querySelector('#thanksBtn');
+        const disqualificationInfo = document.querySelector('#disqualificationInfo');
 
+        const disqualificationBtn = document.querySelector('#disqualificationBtn');
         fetch('/sent', {
             method : 'POST',
             body   : JSON.stringify({
@@ -27,10 +38,20 @@ document.addEventListener('DOMContentLoaded', () => {
         })
             .then(r => r.text())
             .then(data => {
-                // tu powinien być middleware do zliczania punktów?
-                //tu powinien być warunek do wyświetlania rankingu
                 console.log(data);
             });
+
+        DisableCheck.value === 'true' ? disqualificationInfo.style.display = 'block' : thanksInfo.style.display = 'block';
+
+        disqualificationBtn.addEventListener('click', ()=> {
+                        disqualificationInfo.style.display = 'none';
+                        thanksInfo.style.display = 'block';
+        });
+        thanksBtn.addEventListener('click', ()=>{
+            thanksInfo.style.display = 'none';
+
+            })
+
     });
 
     fetch('/climbers', {
@@ -98,11 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    let DisableCheck = document.querySelector('#isDisqualified');
-    let select = document.querySelectorAll('select:not(#isDisqualified)');
-    DisableCheck.addEventListener('change', function(){
-        DisableCheck.value === 'true' ? select.forEach(select => select.disabled = true)
-            : select.forEach(select=> select.disabled = false);
-    });
+
+
 
 });

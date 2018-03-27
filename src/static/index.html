@@ -23,7 +23,6 @@
                 Enter the results of the competition
             </h3>
             </div>
-        <!--<div id="content">-->
             <form action="/sent" class="singleResult">
                     <div class="form-group">
                         <p>
@@ -55,10 +54,19 @@
                             <!--</div>-->
                         </p>
 
-                        <button type="submit" class="btn btn-danger" id="btn">Submit</button>
-                    <!--</div>-->
+                        <button type="submit" class="btn btn-danger" id="submitBtn">CONFIRM</button>
                 </div>
         </form>
+        <div class="row" id="popups">
+            <div class="col-sm-6 col-xs-6 col-sm-6" id="thanksInfo">
+                <p>Thank you for your data!</p>
+                <button class="btn btn-warning" id="thanksBtn">OK</button>
+            </div>
+            <div class="col-sm-6 col-xs-6 col-sm-6" id="disqualificationInfo">
+                <p>Are you sure this climber is disqualified?</p>
+                <button class="btn btn-danger" id="disqualificationBtn">YES</button>
+            </div>
+        </div>
     </div>
 </div>
 

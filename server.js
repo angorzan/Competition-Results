@@ -1,10 +1,14 @@
+// usunięcie zdyskwalifikowanych z listy rankingowej
+// frontend dla rankingu
+// popup dla formaularza - wysłano, dziękujemy, wprowadż następnego
+// alert czy na pewno dyskwalifikacja?
+    // alert - climber ju ż zaliczył tę trasę - blokada wysłania frontend
+// docker
+// testy
 const express = require('express');
 const app = express ();
 const path = require('path');
 const bodyParser = require('body-parser');
-const pointscounterMiddleware = require('./points_counter_middleware');
-const rankingUpdateMiddleware = require('./ranking_update_middleware');
-let winners = require('./ranking_update_middleware');
 
 class Climber{
     constructor(ClimberName, ClimberId, ClimberTotalPoints)
@@ -65,7 +69,6 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-
 app.post('/sent', (req, res) => {
     console.log(req.body);
     const {name, routeId, time, isDisqualified} = req.body;
@@ -98,12 +101,6 @@ app.get('/time', (req, res) => {
 
     res.send(Array.from(climbersTime.values()));
 });
-
-
-// app.get('/sent',(req, res) => {
-//     res.send('Thank you for your data!');
-// });
-
 
 app.get('/rankings',(req, res) => {
     let climberAr = Array.from(climbers.values());
