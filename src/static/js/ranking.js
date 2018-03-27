@@ -35,7 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 secondTd.innerText = climber.name;
                 thirdTd.innerText = climber.totalPoints;
 
-                // newTr.innerText = climber.name;
+                disqualifiedBtn.addEventListener('click', ()=>{
+                    rankingBody.removeChild(newTr);
+                })
             });
         });
 

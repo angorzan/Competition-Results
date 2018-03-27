@@ -2,37 +2,46 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 18px; }
+  font-size: 18px;
+}
 
 #content {
   background-image: url("../img/game-of-thrones.jpg");
   background-size: cover;
   color: white;
-  height: 100vh; }
+  height: 100vh;
+}
 
 #header {
   text-align: center;
   text-transform: uppercase;
-  padding-bottom: 50px; }
+  padding-bottom: 50px;
+
+}
 
 th {
   text-transform: uppercase;
   padding-top: 5px;
-  padding-bottom: 5px; }
+  padding-bottom: 5px;
+}
 
 td, tr {
   padding-top: 5px;
   padding-bottom: 5px;
-  background-color: rgba(0, 0, 0, 0.4); }
+  background-color: rgba(0, 0, 0, 0.4);
 
+}
 tr:hover {
-  background-color: darkred; }
+  background-color: darkred;
+}
 
 select {
-  cursor: pointer; }
+  cursor:pointer;
+}
 
 #thanksInfo {
-  display: none; }
-
+  display: none;
+}
 #disqualificationInfo {
-  display: none; }
+  display: none;
+}
