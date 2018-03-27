@@ -2,17 +2,14 @@
 <html lang="EN">
 <meta charset="UTF-8">
 <head>
-    <title>Climbing Competition</title>
+    <title>Game of Thrones Climbing Tournament</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-
-    <!-- Optional theme -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-
-    <!-- Latest compiled and minified JavaScript -->
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 <div id="content">
@@ -20,7 +17,7 @@
     <div class="container">
         <div id="header">
             <h3>
-                Enter the results of the competition
+                Enter the results of the tournament
             </h3>
             </div>
             <form action="/sent" class="singleResult">
@@ -47,22 +44,17 @@
                                 <option value="false">No</option>
                                 <option value="true">Yes</option>
                             </select>
-
-                            <!--<div class="checkbox">-->
-                                <!--<label><input type="checkbox" id="isDisqualified">is disqualified-->
-                                <!--</label>-->
-                            <!--</div>-->
                         </p>
 
                         <button type="submit" class="btn btn-danger" id="submitBtn">CONFIRM</button>
                 </div>
         </form>
         <div class="row" id="popups">
-            <div class="col-sm-6 col-xs-6 col-sm-6" id="thanksInfo">
+            <div class="col-sm-6 col-xs-6 col-md-6" id="thanksInfo">
                 <p>Thank you for your data!</p>
                 <button class="btn btn-warning" id="thanksBtn">OK</button>
             </div>
-            <div class="col-sm-6 col-xs-6 col-sm-6" id="disqualificationInfo">
+            <div class="col-sm-6 col-xs-6 col-md-6" id="disqualificationInfo">
                 <p>Are you sure this climber is disqualified?</p>
                 <button class="btn btn-danger" id="disqualificationBtn">YES</button>
             </div>
@@ -71,5 +63,6 @@
 </div>
 
 <script src="./js/app.js"></script>
+
 </body>
 </html>

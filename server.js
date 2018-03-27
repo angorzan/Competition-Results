@@ -1,10 +1,3 @@
-// usunięcie zdyskwalifikowanych z listy rankingowej
-// frontend dla rankingu
-// popup dla formaularza - wysłano, dziękujemy, wprowadż następnego
-// alert czy na pewno dyskwalifikacja?
-    // alert - climber ju ż zaliczył tę trasę - blokada wysłania frontend
-// docker
-// testy
 const express = require('express');
 const app = express ();
 const path = require('path');
@@ -27,7 +20,6 @@ climbers.set('Arya Stark', new Climber('Arya Stark', 4, 0));
 climbers.set('Brienne Of Tarth', new Climber('Brienne Of Tarth', 5, 0));
 climbers.set('Daenerys Targaryen', new Climber('Daenerys Targaryen', 6, 0));
 console.log(climbers);
-
 
 class Route {
     constructor(name, id, points) {
@@ -102,11 +94,18 @@ app.get('/time', (req, res) => {
     res.send(Array.from(climbersTime.values()));
 });
 
-app.get('/rankings',(req, res) => {
+app.get('/ranking',(req, res) => {
+
     let climberAr = Array.from(climbers.values());
     climberAr.sort(function(a,b) {return (a.totalPoints > b.totalPoints) ? -1 : ((b.totalPoints > a.totalPoints) ? 1 : 0);} );
     res.send(climberAr);
 });
+
+app.get('/rankings',(req, res) => {
+    app.use('ranking', express.static(__dirname + './src/static'));
+    res.sendFile(__dirname + '/src/static/ranking.html');
+});
+
 
 app.listen(3000, ()	=>	{
     console.log('Serwer is listening on	http://localhost:3000');

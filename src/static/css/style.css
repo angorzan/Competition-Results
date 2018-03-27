@@ -4,15 +4,40 @@
     box-sizing: border-box;
     font-size: 18px;
 }
+
+#header {
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 50px;
+
+}
+
+th {
+    text-transform: uppercase;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+td, tr {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(0, 0, 0, 0.4);
+
+}
+tr:hover {
+    background-color: darkred;
+}
 #content {
     background-image: url("../img/game-of-thrones.jpg");
     background-size: cover;
     color: white;
     height: 100vh;
 }
+
 select {
     cursor:pointer;
 }
+
 .selects {
     font-size: 14px;
 }
@@ -23,5 +48,3 @@ select {
 #disqualificationInfo {
     display: none;
 }
-
-
