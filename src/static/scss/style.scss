@@ -3,12 +3,12 @@
   padding: 0;
   box-sizing: border-box;
   font-size: 18px;
+  color: white;
 }
 
 #content {
   background-image: url("../img/game-of-thrones.jpg");
   background-size: cover;
-  color: white;
   height: 100vh;
 }
 
@@ -31,6 +31,10 @@ td, tr {
   background-color: rgba(0, 0, 0, 0.4);
 
 }
+.row {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
 tr:hover {
   background-color: darkred;
 }
@@ -42,6 +46,7 @@ select {
 #thanksInfo {
   display: none;
 }
+
 #disqualificationInfo {
   display: none;
 }

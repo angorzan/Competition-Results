@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const audio = new Audio('./mp3/GameofThrones.mp3');
     const ClimberNameField = document.querySelector('[name="ClimberName"]');
     const routeNumberField = document.querySelector('[name="routeNumber"]');
     const timeField = document.querySelector('[name="time"]');
@@ -7,11 +8,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const DisableCheck = document.querySelector('#isDisqualified');
     const submitBtn = document.querySelector('#submitBtn');
     const select = document.querySelectorAll('select:not(#isDisqualified)');
+    const soundOn = document.querySelector('#sound-on');
+    const soundOff = document.querySelector('#sound-off');
 
+    soundOn.addEventListener('click', ()=>{
+        audio.play()
+    });
+    soundOff.addEventListener('click',()=>{
+        audio.pause()
+    });
     DisableCheck.addEventListener('change', function(){
         DisableCheck.value === 'true' ? select.forEach(select => select.disabled = true)
             : select.forEach(select=> select.disabled = false);
     });
+
 
     submitBtn.addEventListener('click', event => {
         event.preventDefault();
@@ -47,10 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         disqualificationInfo.style.display = 'none';
                         thanksInfo.style.display = 'block';
         });
-        thanksBtn.addEventListener('click', ()=>{
-            thanksInfo.style.display = 'none';
-
-            })
+        // thanksBtn.addEventListener('click', ()=>{
+        //     thanksInfo.style.display = 'none';
+        //
+        //     })
 
     });
 

@@ -7,15 +7,18 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
 </head>
 <body>
 <div id="content">
-
     <div class="container">
+
         <div id="header">
+            <button id="sound-on"><i class="fa fa-bell"></i></button>
+            <button id="sound-off"> <i class="fa fa-bell-slash"></i></i></button>
             <h3>
                 Enter the results of the tournament
             </h3>
@@ -52,13 +55,16 @@
         <div class="row" id="popups">
             <div class="col-sm-6 col-xs-6 col-md-6" id="thanksInfo">
                 <p>Thank you for your data!</p>
-                <button class="btn btn-warning" id="thanksBtn">OK</button>
+                <a href="/rankings" class="btn btn-warning" id="thanksBtn">OK</a>
             </div>
             <div class="col-sm-6 col-xs-6 col-md-6" id="disqualificationInfo">
                 <p>Are you sure this climber is disqualified?</p>
                 <button class="btn btn-danger" id="disqualificationBtn">YES</button>
             </div>
+            <a href='/rankings' id="linkToRanking" class="btn btn-warning">Check the ranking</a>
         </div>
+
+
     </div>
 </div>
 
