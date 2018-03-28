@@ -19,12 +19,12 @@ class Climber{
 };
 
 let climbers = new Map();
-climbers.set('Jon Snow', new Climber('Jon Snow', 1, 0, false));
-climbers.set('Jaime Lannister', new Climber('Jaime Lannister', 2, 0, false));
-climbers.set('Ramsay Bolton', new Climber('Ramsay Bolton', 3, 0, false));
-climbers.set('Arya Stark', new Climber('Arya Stark', 4, 0, false));
-climbers.set('Brienne Of Tarth', new Climber('Brienne Of Tarth', 5, 0, false));
-climbers.set('Daenerys Targaryen', new Climber('Daenerys Targaryen', 6, 0, false));
+climbers.set('1', new Climber('Jon Snow', 1, 0, false));
+climbers.set('2', new Climber('Jaime Lannister', 2, 0, false));
+climbers.set('3', new Climber('Ramsay Bolton', 3, 0, false));
+climbers.set('4', new Climber('Arya Stark', 4, 0, false));
+climbers.set('5', new Climber('Brienne Of Tarth', 5, 0, false));
+climbers.set('6', new Climber('Daenerys Targaryen', 6, 0, false));
 console.log(climbers);
 
 class Route {
@@ -69,10 +69,10 @@ app.use(bodyParser.json());
 
 app.post('/sent', (req, res) => {
     console.log(req.body);
-    const {name, routeId, time, isDisqualified} = req.body;
-        console.log(name);
+    const {climberId, routeId, time, isDisqualified} = req.body;
+        console.log(climberId);
         console.log(routeId);
-        let climber = climbers.get(name);
+        let climber = climbers.get(climberId);
         console.log(routes);
         let route = routes.get(routeId);
         console.log(route);
@@ -81,7 +81,7 @@ app.post('/sent', (req, res) => {
         climber.totalPoints += ClimberTime.points;
 
     console.log(climbers);
-    console.log(name, route, time, isDisqualified);
+    console.log(climberId, route, time, isDisqualified);
     res.send('Thank you for your data!');
 });
 
@@ -112,6 +112,7 @@ app.get('/rankings',(req, res) => {
 
 app.delete('/climbers/:name', (req, res) => {
     const nameToDelete = req.params.name;
+    nameToDelete.splice(nameToDelete.indexOf('%'),3,' ');
     climbers.delete(nameToDelete);
 
     res.send(sortClimbers());

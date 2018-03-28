@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     const audio = new Audio('./mp3/GameofThrones.mp3');
-    const ClimberNameField = document.querySelector('[name="ClimberName"]');
+    const climberIdField = document.querySelector('[name="climberId"]');
     const routeNumberField = document.querySelector('[name="routeNumber"]');
     const timeField = document.querySelector('[name="time"]');
     const isDisqualifiedField = document.querySelector('[name="isDisqualified"]');
@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const soundOff = document.querySelector('#sound-off');
 
     soundOn.addEventListener('click', ()=>{
-        audio.play()
+        audio.play();
     });
     soundOff.addEventListener('click',()=>{
-        audio.pause()
+        audio.pause();
     });
     DisableCheck.addEventListener('change', function(){
         DisableCheck.value === 'true' ? select.forEach(select => select.disabled = true)
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     submitBtn.addEventListener('click', event => {
         event.preventDefault();
-        const name = ClimberNameField.value;
+        const climberId = climberIdField.value;
         const routeId = routeNumberField.value;
         const time = timeField.value;
         const isDisqualified = isDisqualifiedField.value;
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch('/sent', {
             method : 'POST',
             body   : JSON.stringify({
-                name,
+                climberId,
                 routeId,
                 time,
                 isDisqualified,
@@ -75,12 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
             let climbers = [];
             console.log(data);
             data.forEach(item=> climbers.push(item));
-            let climberName = document.querySelector('#ClimberName');
+            let climberId = document.querySelector('#climberId');
             climbers.forEach(climber=> {
                 let option = document.createElement('option');
-                climberName.appendChild(option);
-                option.setAttribute('value', climber.name);
-                option.innerText = climber.name;
+                climberId.appendChild(option);
+                option.setAttribute('value', climber.id);
+                option.innerText = `Climber nr ${climber.id} - ${climber.name}`;
 
             });
         });

@@ -4,18 +4,23 @@
   box-sizing: border-box;
   font-size: 18px;
   color: white;
+  background-image: url("../img/game-of-thrones.jpg");
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+
 }
 
 #content {
-  background-image: url("../img/game-of-thrones.jpg");
-  background-size: cover;
-  height: 100vh;
+
+  font-family: 'Chicle', cursive;
 }
 
 #header {
   text-align: center;
   text-transform: uppercase;
   padding-bottom: 50px;
+  font-family: 'Chicle', cursive;
 
 }
 
@@ -49,4 +54,8 @@ select {
 
 #disqualificationInfo {
   display: none;
+}
+button {
+  width: 100%;
+  height: 100%;
 }

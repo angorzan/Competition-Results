@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const soundOff = document.querySelector('#sound-off');
 
     soundOn.addEventListener('click', ()=>{
-        audio.play()
+        audio.play();
     });
     soundOff.addEventListener('click',()=>{
-        audio.pause()
+        audio.pause();
     });
 
 
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 newTr.appendChild(isDisqualifiedBtn);
                 isDisqualifiedBtn.className = "btn btn-warning";
                 isDisqualifiedBtn.innerText = "DISQUALIFY";
-                firstTd.className = "col-md-4 col-xs-4 col-sm-4";
+                firstTd.className = "col-md-3 col-xs-3 col-sm-3";
                 secondTd.className = "col-md-4 col-xs-4 col-sm-4";
                 thirdTd.className = "col-md-4 col-xs-4 col-sm-4";
                 firstTd.innerText = i;
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 isDisqualifiedBtn.addEventListener('click', (e) => {
                     e.target.className = "btn btn-danger ableToRemove";
                     e.target.name = 'ableToRemove';
-                    e.target.innerText = 'CONFIRM';
+                    e.target.innerText = 'CONFIRM ';
                     // e.target.action = '/disqualify';
                     climber.isDisqualified = true;
                     // rankingBody.removeChild(newTr);

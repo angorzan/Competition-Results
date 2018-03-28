@@ -4,10 +4,13 @@
 <head>
     <title>Game of Thrones Climbing Tournament</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 
@@ -26,8 +29,8 @@
             <form action="/sent" class="singleResult">
                     <div class="form-group">
                         <p>
-                            <label for="ClimberName">Choose climber</label>
-                            <select class="form-control" name="ClimberName" id="ClimberName">
+                            <label for="climberId">Choose climber</label>
+                            <select class="form-control" name="climberId" id="climberId">
                         </select></p>
 
                         <p>
@@ -50,6 +53,7 @@
                         </p>
 
                         <button type="submit" class="btn btn-danger" id="submitBtn">CONFIRM</button>
+                        <a href='/rankings' id="linkToRanking" class="btn btn-warning">Check the ranking</a>
                 </div>
         </form>
         <div class="row" id="popups">
@@ -61,7 +65,7 @@
                 <p>Are you sure this climber is disqualified?</p>
                 <button class="btn btn-danger" id="disqualificationBtn">YES</button>
             </div>
-            <a href='/rankings' id="linkToRanking" class="btn btn-warning">Check the ranking</a>
+
         </div>
 
 
