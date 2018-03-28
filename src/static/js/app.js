@@ -56,6 +56,18 @@ document.addEventListener('DOMContentLoaded', () => {
         disqualificationBtn.addEventListener('click', ()=> {
                         disqualificationInfo.style.display = 'none';
                         thanksInfo.style.display = 'block';
+            fetch(`/climbers/${climber.id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(r => r.json())
+                .then(data => {
+                    return data;
+
+
+                })
         });
         // thanksBtn.addEventListener('click', ()=>{
         //     thanksInfo.style.display = 'none';

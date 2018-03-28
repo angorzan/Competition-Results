@@ -110,10 +110,9 @@ app.get('/rankings',(req, res) => {
 });
 
 
-app.delete('/climbers/:name', (req, res) => {
-    const nameToDelete = req.params.name;
-    nameToDelete.splice(nameToDelete.indexOf('%'),3,' ');
-    climbers.delete(nameToDelete);
+app.delete('/climbers/:id', (req, res) => {
+    const idToDelete = req.params.id;
+    climbers.delete(idToDelete);
 
     res.send(sortClimbers());
 });
