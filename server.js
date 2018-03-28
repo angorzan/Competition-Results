@@ -2,6 +2,11 @@ const express = require('express');
 const app = express ();
 const path = require('path');
 const bodyParser = require('body-parser');
+let sortClimbers = () => {
+    let climberAr = Array.from(climbers.values());
+    return climberAr.sort(function(a,b) {return (a.totalPoints > b.totalPoints) ? -1 : ((b.totalPoints > a.totalPoints) ? 1 : 0);} );
+};
+
 
 class Climber{
     constructor(ClimberName, ClimberId, ClimberTotalPoints, isDisqualified)
@@ -96,11 +101,7 @@ app.get('/time', (req, res) => {
 });
 
 app.get('/ranking',(req, res) => {
-
-    // climbers.values().has('isDisqualified: true') && climbers.values().delete();
-    let climberAr = Array.from(climbers.values());
-    climberAr.sort(function(a,b) {return (a.totalPoints > b.totalPoints) ? -1 : ((b.totalPoints > a.totalPoints) ? 1 : 0);} );
-    res.send(climberAr);
+    res.send(sortClimbers());
 });
 
 app.get('/rankings',(req, res) => {
@@ -108,28 +109,14 @@ app.get('/rankings',(req, res) => {
     res.sendFile(__dirname + '/src/static/ranking.html');
 });
 
-// app.post('/disqualify', (req, res) =>{
-//     console.log(req.body);
-//     const {ableToRemove} = req.body;
-//     console.log(ableToRemove);
-    // console.log(routeId);
-    // let climber = climbers.get(name);
-    // console.log(routes);
-    // let route = routes.get(routeId);
-    // console.log(route);
-    // climber.totalPoints += route.points;
-    // let ClimberTime = climbersTime.get(time);
-    // climber.totalPoints += ClimberTime.points;
-    //
-    // console.log(climbers);
-    // console.log(name, route, time, isDisqualified);
-    // res.send('Thank you for your data!');
 
+app.delete('/climbers/:name', (req, res) => {
+    const nameToDelete = req.params.name;
+    climbers.delete(nameToDelete);
 
+    res.send(sortClimbers());
+});
 
-
-
-// });
 app.listen(3000, ()	=>	{
     console.log('Serwer is listening on	http://localhost:3000');
 });
