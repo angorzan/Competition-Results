@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const audio = new Audio('./mp3/GameofThrones.mp3');
     const rankingBody = document.querySelector('#rankingBody');
-    const disqualificationInfo = document.querySelector('#disqualificationInfo');
     const soundOn = document.querySelector('#sound-on');
     const soundOff = document.querySelector('#sound-off');
     let disqualifyAndSetnewRanking = (data) => {
@@ -21,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             newTr.appendChild(thirdTd);
             newTr.appendChild(isDisqualifiedBtn);
             isDisqualifiedBtn.className = "btn btn-danger disqualify";
-            isDisqualifiedBtn.innerText = "DISQUALIFY";
+            isDisqualifiedBtn.innerText = "Disqualify";
             firstTd.className = "col-md-3 col-xs-3 col-sm-3";
             secondTd.className = "col-md-4 col-xs-4 col-sm-4";
             thirdTd.className = "col-md-4 col-xs-4 col-sm-4";
@@ -30,10 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             thirdTd.innerText = climber.totalPoints;
 
             isDisqualifiedBtn.addEventListener('click', () => {
-                // rankingBody.removeChild(newTr);
-                while (rankingBody.firstChild) {
-                    rankingBody.firstChild.remove();
-                }
+
                 fetch(`/climbers/${climber.id}`, {
                     method: 'DELETE',
                     headers: {
@@ -41,7 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                 })
                     .then(r => r.json())
-                    .then(data => disqualifyAndSetnewRanking(data)
+                    .then(data => {
+                        while (rankingBody.firstChild) {
+                            rankingBody.firstChild.remove();
+                        }
+                        disqualifyAndSetnewRanking(data)
+                    }
             )
             })
         })

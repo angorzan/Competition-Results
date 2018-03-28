@@ -4,10 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const climberIdField = document.querySelector('[name="climberId"]');
     const routeNumberField = document.querySelector('[name="routeNumber"]');
     const timeField = document.querySelector('[name="time"]');
-    const isDisqualifiedField = document.querySelector('[name="isDisqualified"]');
-    const DisableCheck = document.querySelector('#isDisqualified');
     const submitBtn = document.querySelector('#submitBtn');
-    const select = document.querySelectorAll('select:not(#isDisqualified)');
     const soundOn = document.querySelector('#sound-on');
     const soundOff = document.querySelector('#sound-off');
 
@@ -17,30 +14,24 @@ document.addEventListener('DOMContentLoaded', () => {
     soundOff.addEventListener('click',()=>{
         audio.pause();
     });
-    DisableCheck.addEventListener('change', function(){
-        DisableCheck.value === 'true' ? select.forEach(select => select.disabled = true)
-            : select.forEach(select=> select.disabled = false);
-    });
-
 
     submitBtn.addEventListener('click', event => {
         event.preventDefault();
         const climberId = climberIdField.value;
         const routeId = routeNumberField.value;
         const time = timeField.value;
-        const isDisqualified = isDisqualifiedField.value;
         const thanksInfo = document.querySelector('#thanksInfo');
         const thanksBtn = document.querySelector('#thanksBtn');
-        const disqualificationInfo = document.querySelector('#disqualificationInfo');
-
-        const disqualificationBtn = document.querySelector('#disqualificationBtn');
+        thanksInfo.style.display = 'block';
+        setTimeout(()=>{
+            thanksInfo.style.display = 'none';
+        }, 1000);
         fetch('/sent', {
             method : 'POST',
             body   : JSON.stringify({
                 climberId,
                 routeId,
                 time,
-                isDisqualified,
             }),
             headers: {
                 'Content-Type' : 'application/json',
@@ -50,29 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 console.log(data);
             });
-
-        DisableCheck.value === 'true' ? disqualificationInfo.style.display = 'block' : thanksInfo.style.display = 'block';
-
-        disqualificationBtn.addEventListener('click', ()=> {
-                        disqualificationInfo.style.display = 'none';
-                        thanksInfo.style.display = 'block';
-            fetch(`/climbers/${climber.id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            })
-                .then(r => r.json())
-                .then(data => {
-                    return data;
-
-
-                })
-        });
-        // thanksBtn.addEventListener('click', ()=>{
-        //     thanksInfo.style.display = 'none';
-        //
-        //     })
 
     });
 

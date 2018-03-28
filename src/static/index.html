@@ -2,77 +2,43 @@
 <html lang="EN">
 <meta charset="UTF-8">
 <head>
-    <title>Game of Thrones Climbing Tournament</title>
+    <title>Climbing Competition</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Chicle" rel="stylesheet">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-
 </head>
 <body>
 <div id="content">
     <div class="container">
-
         <div id="header">
             <button id="sound-on"><i class="fa fa-bell"></i></button>
             <button id="sound-off"> <i class="fa fa-bell-slash"></i></i></button>
             <h3>
-                Enter the results of the tournament
+                Ranking of the Game of Thrones Tournament
             </h3>
-            </div>
-            <form action="/sent" class="singleResult">
-                    <div class="form-group">
-                        <p>
-                            <label for="climberId">Choose climber</label>
-                            <select class="form-control" name="climberId" id="climberId">
-                        </select></p>
-
-                        <p>
-
-                            <label for="routeNumber">Choose route</label>
-                            <select class="form-control" name="routeNumber" id="routeNumber">
-                        </select></p>
-
-                        <p>
-                            <label for="time">Choose time</label>
-                            <select class="form-control" name="time" id="time">
-                        </select></p>
-
-                        <p>
-                            <label for="isDisqualified">Choose if climber is disqualified</label>
-                            <select class="form-control" name="isDisqualified" id="isDisqualified">
-                                <option value="false">No</option>
-                                <option value="true">Yes</option>
-                            </select>
-                        </p>
-
-                        <button type="submit" class="btn btn-danger" id="submitBtn">CONFIRM</button>
-                        <a href='/rankings' id="linkToRanking" class="btn btn-warning">Check the ranking</a>
-                </div>
-        </form>
-        <div class="row" id="popups">
-            <div class="col-sm-6 col-xs-6 col-md-6" id="thanksInfo">
-                <p>Thank you for your data!</p>
-                <a href="/rankings" class="btn btn-warning" id="thanksBtn">OK</a>
-            </div>
-            <div class="col-sm-6 col-xs-6 col-md-6" id="disqualificationInfo">
-                <p>Are you sure this climber is disqualified?</p>
-                <button class="btn btn-danger" id="disqualificationBtn">YES</button>
-            </div>
-
         </div>
 
 
+        <table class="table-responsive container table">
+            <thead>
+                <tr>
+                    <th class="col-md-1 col-xs-1 col-sm-1">rank</th>
+                    <th class="col-md-5 col-xs-5 col-sm-5">name</th>
+                    <th class="col-md-5 col-xs-5 col-sm-5">total points</th>
+                    <th class="col-md-1 col-xs-1 col-sm-1"></th>
+                </tr>
+            </thead>
+            <tbody id="rankingBody">
+            </tbody>
+        </table>
+        <a href="/addclimbers" class="btn btn-warning">Add new score</a>
     </div>
+
 </div>
-
-<script src="./js/app.js"></script>
-
+<script src="js/ranking.js"></script>
 </body>
 </html>

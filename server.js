@@ -95,6 +95,10 @@ app.get('/routes', (req, res) => {
     res.send(Array.from(routes.values()));
 });
 
+app.get('/addclimbers', (req, res) => {
+    app.use('add_climbers', express.static(__dirname + './src/static'));
+    res.sendFile(__dirname + '/src/static/add_climbers.html');
+});
 app.get('/time', (req, res) => {
 
     res.send(Array.from(climbersTime.values()));
@@ -104,9 +108,9 @@ app.get('/ranking',(req, res) => {
     res.send(sortClimbers());
 });
 
-app.get('/rankings',(req, res) => {
+app.get('/',(req, res) => {
     app.use('ranking', express.static(__dirname + './src/static'));
-    res.sendFile(__dirname + '/src/static/ranking.html');
+    res.sendFile(__dirname + '/src/static/index.html');
 });
 
 
