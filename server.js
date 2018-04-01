@@ -2,6 +2,7 @@ const express = require('express');
 const app = express ();
 const path = require('path');
 const bodyParser = require('body-parser');
+const typeOf = require('typeof');
 let sortClimbers = () => {
     let climberAr = Array.from(climbers.values());
     return climberAr.sort(function(a,b) {return (a.totalPoints > b.totalPoints) ? -1 : ((b.totalPoints > a.totalPoints) ? 1 : 0);} );
@@ -68,21 +69,13 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 app.post('/sent', (req, res) => {
-    console.log(req.body);
-    const {climberId, routeId, time, isDisqualified} = req.body;
-        console.log(climberId);
-        console.log(routeId);
-        let climber = climbers.get(climberId);
-        console.log(routes);
-        let route = routes.get(routeId);
-        console.log(route);
-        climber.totalPoints += route.points;
-        let ClimberTime = climbersTime.get(time);
-        climber.totalPoints += ClimberTime.points;
-
-    console.log(climbers);
-    console.log(climberId, route, time, isDisqualified);
-    res.send('Thank you for your data!');
+     const {climberId, routeId, time, isDisqualified} = req.body;
+     let climber = climbers.get(climberId);
+     let route = routes.get(routeId);
+     climber.totalPoints += route.points;
+     let ClimberTime = climbersTime.get(time);
+     climber.totalPoints += ClimberTime.points;
+     res.send(climber);
 });
 
 app.get('/climbers', (req, res) => {
@@ -122,5 +115,7 @@ app.delete('/climbers/:id', (req, res) => {
 });
 
 app.listen(3000, ()	=>	{
-    console.log('Serwer is listening on	http://localhost:3000');
+    console.log('Server is listening on http://localhost:3000');
 });
+
+module.exports = app;
