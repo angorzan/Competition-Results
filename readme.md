@@ -1,13 +1,15 @@
-2. “Wyniki zawodów” - W Krakowie często odbywają się zawody wspinaczkowe. Przygotuj stronę, która pozwoliłaby organizatorom na bieżąco umieszczać wyniki online. 
-Kiedy zawodnik w trakcie zawodów ukończy drogę, organizatorzy za pomocą strony powinni być w stanie oznaczyć kto jaką drogę ukończył. Lista dróg powinna być zamknięta (tj. drogi powinny być do wyboru a nie do dowolnego wpisywania) i każdej drodze powinna odpowiadać liczba punktów. Również lista zawodników powinna być zamknięta, pobierana z serwera. Po wejściu na stronę, użytkownik powinien widzieć aktualny ranking zawodników (pod względem liczby punktów) z listą ukończonych przez nich dróg oraz przycisk do dodania nowego wpisu (zawodnik, ukończona droga). Punktacja powinna być automatycznie liczona przez serwer. API i strona powinny również umożliwiać dyskwalifikację zawodnika, co powoduje usunięcie jego wpisu z rankingu.
-W projekcie nie wymagamy persystencji (lista dróg, aktualny ranking itd mogą być trzymane w pamięci i działać tylko w obrębie jednego uruchomienia).  
+######Introduction
+**This is my application for Competition Results Management developed as a final project for the Web Developer Academy organised by Motorola Solutions.**
+Application was written in *Vanilla JavaScript* using *Node.js*, *Express.js*, *Bootstrap3*, *Grunt*, *Mocha & Chai* tests.
+Funs of the Game of Thrones have an ability to enjoy introducing tournament between GOT main characters in the well-known GOT world while listening to their favourite soundtrack downloaded from [Youtube](https://www.youtube.com/watch?v=Hf9u3jPvkkI). Obviously if it does not suit you, feel free to make changes in the climber names, routes, timing and available points by updating new objects data in the 'server.js' file. You can also modify styles/background by launching Grunt and updating 'style.scss' file, if you are interested how to do it, look for more information in the next paragraph of this description.
 
-Minimalne wymagania: 
-1) Serwer HTTP z endpointami do pobierania listy dróg, listy zawodników, pobierania aktualnego rankingu, dodawania przejścia i dyskwalifikacji zawodnika.
-2) Prosta strona umożliwiająca wykonanie powyższych operacji - strona główna to aktualny ranking z przyciskiem umożliwiającym dodanie nowego przejścia. 
+######How to start
+In order to launch my application, please download or clone my repository. Then in the main directory in the project root in command line please type `npm install` and `npm start`. The project will be available in your browser on 'http://localhost:3000'. In order to enjoy styles in full quality, please ensure that you are connected to WIFI or LAN. Any changes in style.scss file will be converted to style.css by having Grunt launched (in order to ensure it please type `grunt` in the other command line that you started your server also in the main directory in the project root). RWD is provided, checked manually in the Chrome Developer Tools, in case of problems with displaying the correct view on your screen, I would be grateful for the detailed information sent to the email address: anna.gorzanowska@gmail.com. You are able to launch Mocha & Chai tests by typing 'npm test'. Dockerfile is added, I will expand the ability to build image docker in the future.
 
-Możliwe rozwinięcia (*):
-Każdy projekt powinien umożliwiać wystartowanie go za pomocą jednej komendy. Przygotuj taki package.json żeby po odpaleniu npm start Twój projekt się uruchamiał.
-Zbuduj image dockerowy który po wystartowaniu uruchamia Twój serwer.
+######More About
+This application gives competition manager an opportunity to put online result of competition by selecting not disqualified climbers, available routes, timings and get actual ranking list automatically updated by server. The project does not yet provide persistence, it is planned to be upgraded in the future.
+Actually 'Disqualify' button removes climber from the database. In the future I am planning to upgrade it by changing 'isDisqualified' property that could be easily managed instead of using 'fetch.delete'. In order to refresh the database just stop and start your server again by pressing 'Ctrl+C' and typing `npm start`.
 
-Uwaga: Jeśli czujesz się mocniej w tematach “backendowych”, możesz zrobić tylko backend. Jeśli wolisz pracować na front-endzie, ogranicz się do jednego wybranego endpointu, a poświęć więcej czasu na wygląd strony.
+######Extensions
+It is my first application with backend background developed by myself and with test provided. I really enjoyed developing it from scratch and I hope that you will enjoy it, too.
+I learned a lot during the development of this project but I still have a lot to learn, so I would be grateful for any additional suggestions regarding the project sent to :e-mail: anna.gorzanowska@gmail.com. I plan to introduce additional extensions to the project in the future if I have more free time.
