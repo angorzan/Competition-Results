@@ -5,11 +5,8 @@ const server = require('../server');
 const should = chai.should();
 
 
-
 chai.use(chaiFetch);
 chai.use(chaiHttp);
-
-
 
 describe('SettingClimbers', function() {
 
@@ -23,16 +20,17 @@ describe('SettingClimbers', function() {
                 done();
             });
     });
-    it("should correctly update Deanerys Targaryen's total points after she finished the Wall in less than 2 minutes", function(){
+    it("should correctly update Deanerys Targaryen's total points after she reached the Wall in less than 2 minutes", function(done){
         chai.request(server)
             .post('/sent')
-            .send({'id': '6', 'totalPoints': 108})
+            .send({'climberId': '6', 'routeId': '2', 'time': '<2', 'isDisqualified': false})
             .end(function(err, res){
-                console.log(res);
+                //console.log(res);
                 res.body.totalPoints.should.equal(108);
                 done();
             })
 
-    })
+    });
+    it('should')
 
 });
