@@ -2,7 +2,7 @@ const express = require('express');
 const app = express ();
 const path = require('path');
 const bodyParser = require('body-parser');
-const typeOf = require('typeof');
+
 let sortClimbers = () => {
     let climberAr = Array.from(climbers.values());
     return climberAr.sort(function(a,b) {return (a.totalPoints > b.totalPoints) ? -1 : ((b.totalPoints > a.totalPoints) ? 1 : 0);} );

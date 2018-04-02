@@ -1,12 +1,14 @@
 const chai = require('chai');
-var chaiHttp = require('chai-http');
-const chaiFetch = require('chai-fetch');
+const chaiHttp = require('chai-http');
 const server = require('../server');
+const chaiSorted = require("chai-sorted");
 const should = chai.should();
+const expect = chai.expect;
 
 
-chai.use(chaiFetch);
+
 chai.use(chaiHttp);
+chai.use(chaiSorted);
 
 describe('SettingClimbers', function() {
 
@@ -25,12 +27,27 @@ describe('SettingClimbers', function() {
             .post('/sent')
             .send({'climberId': '6', 'routeId': '2', 'time': '<2', 'isDisqualified': false})
             .end(function(err, res){
-                //console.log(res);
                 res.body.totalPoints.should.equal(108);
                 done();
             })
 
     });
-    it('should')
+    it('should sort the descending order of all players in relation to their total points', function(done){
+        chai.request(server)
+            .get('/ranking')
+            .end(function(err, res){
+                expect(res.body).to.be.descendingBy('totalPoints');
+                done();
+            })
+
+    });
+    it('should remove disqualified Ramsay Bolton', function(done){
+        chai.request(server)
+            .delete('/climbers/3')
+            .end(function(err, res){
+                expect(res.body.filter(climber => climber.id === 3)).to.have.length(0);
+                done();
+            })
+    });
 
 });

@@ -9,6 +9,10 @@
   background-size: cover;
   color: white;
   height: 100vh; }
+  #content select {
+    cursor: pointer; }
+  #content #thanksInfo {
+    display: none; }
 
 #header {
   text-align: center;
@@ -27,12 +31,3 @@ td, tr {
 
 tr:hover {
   background-color: darkred; }
-
-select {
-  cursor: pointer; }
-
-#thanksInfo {
-  display: none; }
-
-#disqualificationInfo {
-  display: none; }
