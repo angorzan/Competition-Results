@@ -5,7 +5,6 @@
   "main": "index.js",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "chai": "^4.1.2",
     "chai-sorted": "^0.2.0",
     "cookie-parser": "^1.4.3",
     "dev": "^0.1.3",
