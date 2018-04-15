@@ -1,11 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const audio = new Audio('./mp3/GameofThrones.mp3');
     const rankingBody = document.querySelector('#rankingBody');
-    const soundOn = document.querySelector('#sound-on');
-    const soundOff = document.querySelector('#sound-off');
     let disqualifyAndSetnewRanking = (data) => {
         let climbers = [];
-        console.log(data);
         data.forEach(item => climbers.push(item));
         climbers.forEach((climber, i) => {
 
@@ -47,14 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
             })
         })
     };
-
-    soundOn.addEventListener('click', ()=>{
-        audio.play();
-    });
-    soundOff.addEventListener('click',()=>{
-        audio.pause();
-    });
-
 
     fetch('/ranking', {
         method: 'GET',

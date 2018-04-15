@@ -1,19 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const audio = new Audio('./mp3/GameofThrones.mp3');
     const climberIdField = document.querySelector('[name="climberId"]');
     const routeNumberField = document.querySelector('[name="routeNumber"]');
     const timeField = document.querySelector('[name="time"]');
     const submitBtn = document.querySelector('#submitBtn');
-    const soundOn = document.querySelector('#sound-on');
-    const soundOff = document.querySelector('#sound-off');
-
-    soundOn.addEventListener('click', ()=>{
-        audio.play();
-    });
-    soundOff.addEventListener('click',()=>{
-        audio.pause();
-    });
 
     submitBtn.addEventListener('click', event => {
         event.preventDefault();
@@ -53,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(r => r.json())
         .then(data => {
             let climbers = [];
-            console.log(data);
             data.forEach(item=> climbers.push(item));
             let climberId = document.querySelector('#climberId');
             climbers.forEach(climber=> {
@@ -74,7 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(r => r.json())
         .then(data => {
             let routes = [];
-            console.log(data);
             data.forEach(item=> routes.push(item));
             let routeNumber = document.querySelector('#routeNumber');
             routes.forEach(route=> {
@@ -95,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(r => r.json())
         .then(data => {
             let climbersTime = [];
-            console.log(data);
             data.forEach(item=> climbersTime.push(item));
             let time = document.querySelector('#time');
             climbersTime.forEach(item=> {
@@ -106,10 +93,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
             });
         });
-
-
-
-
-
 
 });
