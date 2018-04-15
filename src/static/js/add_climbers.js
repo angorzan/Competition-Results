@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         })
             .then(r => r.text())
             .then(data => {
-                console.log(data);
             });
 
     });
