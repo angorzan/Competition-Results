@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const routeId = routeNumberField.value;
         const time = timeField.value;
         const thanksInfo = document.querySelector('#thanksInfo');
-        const thanksBtn = document.querySelector('#thanksBtn');
         thanksInfo.style.display = 'block';
         setTimeout(()=>{
             thanksInfo.style.display = 'none';
@@ -90,8 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 time.appendChild(option);
                 option.setAttribute('value', item.id);
                 option.innerText = item.threshold;
-
             });
         });
-
 });
